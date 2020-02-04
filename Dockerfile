@@ -11,7 +11,8 @@ RUN mvn -B -e -T 1C verify
 # RUN  apk update && apk upgrade && apk add netcat-openbsd && apk add curl
 # use FROM bryne/spmiabaseimage image to fasten the build process
 FROM bryne/spmiabaseimage
-COPY --from=0 /usr/src/app/target/*.jar ./
+WORKDIR /usr/src/app
+COPY --from=0 /usr/src/app/target/*.jar .
 ADD run.sh run.sh
 RUN chmod +x run.sh
 CMD ./run.sh
