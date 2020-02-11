@@ -3,5 +3,5 @@
 echo "********************************************************"
 echo "Starting Transaction Agent Service ..."
 echo "********************************************************"
-java -Ddebug=$DEBUG_MODE                                                    \
-     -Dspring.profiles.active=$PROFILE -jar /usr/local/transactionagentservice/@project.build.finalName@.jar
+java -Ddebug=$DEBUG_MODE \
+     -Dserver.port=$SERVERPORT -jar /usr/local/usercenter/@project.build.finalName@.jar
