@@ -19,17 +19,22 @@ public class ProductServiceController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping("/tas/getproductlist")
-    public List<Product> getProductList()
+    @RequestMapping("/tas/products")
+    public List<Product> getProductList(int product_id)
     {
-        List<Product> productList = productService.getProductList();
-        logger.info("product list is " + productList);
-        Iterator<Product> it = productList.iterator();
-        while (!it.hasNext()){
-            Product product = it.next();
-            logger.info("the product id " + product.getProduct_id() + " and product name is " + product.getProduct_name());
+        if (product_id == null) {
+            List<Product> productList = productService.getProductList();
+            logger.info("product list is " + productList);
+            Iterator<Product> it = productList.iterator();
+            while (!it.hasNext()) {
+                Product product = it.next();
+                logger.info("the product id " + product.getProduct_id() + " and product name is " + product.getProduct_name());
+            }
+            return productList;
+        }else{
+
         }
-        return productList;
 
     }
+
 }
