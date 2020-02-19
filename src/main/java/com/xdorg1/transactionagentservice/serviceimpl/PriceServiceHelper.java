@@ -41,6 +41,17 @@ public class PriceServiceHelper {
 
         String priceServerUrl = PRICESERVER + "/priceservice/prices";
 
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonPPUList = null;
+        try {
+            jsonPPUList = mapper.writeValueAsString(ppuList);
+        } catch (JsonProcessingException e) {
+            logger.error("Function refreshProductPriceList got error while converting List<ProductPriceUnit> ppuList to String.");
+            e.printStackTrace();
+        }
+
+        logger.info("Function refreshProductPriceList() will send POST with payload: " + jsonPPUList);
+
         ProductPriceUnit[] updatedPPULArray = restTemplate.postForObject(priceServerUrl, ppuList, ProductPriceUnit[].class);
 
         logger.info("Got POST response from /priceservice/prices : " + Arrays.toString(updatedPPULArray));

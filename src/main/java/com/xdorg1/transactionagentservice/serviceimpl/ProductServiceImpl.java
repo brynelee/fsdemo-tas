@@ -38,20 +38,28 @@ public class ProductServiceImpl implements ProductService {
         logger.info("product list is " + productList);
         List<ProductPriceUnit> ppuList = new LinkedList<ProductPriceUnit>();
         for(Product prod: productList){
+            logger.info("Product with id " + prod.getProduct_id() + " will be checked, isDynamicPrice is " + prod.isDynamicPrice());
             if (prod.isDynamicPrice()) {
                 ProductPriceUnit unit = new ProductPriceUnit();
                 unit.ProductId = prod.getProduct_id();
                 unit.ProductName = prod.getProduct_name();
                 ppuList.add(unit);
+                logger.info("ProductPriceUnit: " + unit + " added.");
             }
         }
 
-        //get the price update from price service and update back to the original product list
-        List<ProductPriceUnit> updatedList = priceServiceHelper.refreshProductPriceList(ppuList);
+        logger.info("ProductPriceUnit list is: " + ppuList);
+        logger.info("the size of the ProductPriceUnit list is: " + ppuList.size());
 
-        for(ProductPriceUnit ppu: updatedList){
-            for (Product prod : productList){
-                if (prod.getProduct_id() == ppu.ProductId) prod.setUnit_price(ppu.Price);
+        if(ppuList.size() > 0) {
+
+            //get the price update from price service and update back to the original product list
+            List<ProductPriceUnit> updatedList = priceServiceHelper.refreshProductPriceList(ppuList);
+
+            for (ProductPriceUnit ppu : updatedList) {
+                for (Product prod : productList) {
+                    if (prod.getProduct_id() == ppu.ProductId) prod.setUnit_price(ppu.Price);
+                }
             }
         }
 

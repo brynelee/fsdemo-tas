@@ -8,4 +8,9 @@ public class ProductPriceUnit {
     public String ProductName;
     public BigDecimal Price;
     public Date UpdateTime;
+
+    @Override
+    public String toString() {
+        return "ProductID=" + ProductId + ", ProductName=" + ProductName + ", Price=" + Price + ", UpdateTime=" + UpdateTime;
+    }
 }
