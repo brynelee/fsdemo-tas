@@ -8,5 +8,7 @@ import java.util.List;
 @Service
 public interface ProductService {
 
+    List<Product> getProductListWithoutFreshPrice();
     List<Product> getProductList();
+    Product refreshSingleProductPrice(int product_id, String product_name);
 }
