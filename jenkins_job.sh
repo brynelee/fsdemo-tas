@@ -18,5 +18,5 @@ docker rmi registry.cn-hangzhou.aliyuncs.com/xdorg1/$2 || true
 docker rmi xdorg1/$2 || true
 #docker build -t xdorg1/$2 -f Dockerfile .
 #chmod +x change_image.sh
-#sh change_image.sh $1
+#sh change_image.sh $2
 #kubectl apply -f $1".yml"
