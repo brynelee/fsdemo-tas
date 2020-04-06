@@ -19,6 +19,7 @@
         <maven.compiler.target>14</maven.compiler.target>
         <docker.image.name>xdorg1/transactionagentservice</docker.image.name>
         <docker.image.tag>latest</docker.image.tag>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
