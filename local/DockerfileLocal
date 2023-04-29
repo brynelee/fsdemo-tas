@@ -8,7 +8,7 @@ COPY . .
 RUN mvn -B -e -T 1C verify
 
 # package without maven
-# FROM openjdk:8-jdk-alpine
+# FROM openjdk:14-jdk-alpine
 # RUN  apk update && apk upgrade && apk add netcat-openbsd && apk add curl
 # use FROM bryne/spmiabaseimage image to fasten the build process
 # FROM bryne/spmiabaseimage
