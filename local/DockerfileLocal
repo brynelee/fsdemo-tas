@@ -1,5 +1,5 @@
 # used for hub.docker.com automation build (CI)
-FROM maven:3.6.3-jdk-14
+FROM maven:3.8.6-jdk-11
 COPY ./local/settings.xml /usr/share/maven/conf
 WORKDIR /usr/src/app
 COPY pom.xml .
@@ -8,7 +8,7 @@ COPY . .
 RUN mvn -B -e -T 1C verify
 
 # package without maven
-# FROM openjdk:14-jdk-alpine
+# FROM openjdk:8u212-jre-alpine3.9
 # RUN  apk update && apk upgrade && apk add netcat-openbsd && apk add curl
 # use FROM bryne/spmiabaseimage image to fasten the build process
 # FROM bryne/spmiabaseimage
